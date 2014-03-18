@@ -1,28 +1,30 @@
-== README
+== About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Bright is a simple Library Management System built using Ruby on Rails.
 
-Things you may want to cover:
+At this moment, the primary purpose is to use this project as a training ground in Samyukti.
+In future we may consider to develop this as a full-fledged application.
 
-* Ruby version
+== Installation
 
-* System dependencies
+* Install Ruby on Rails. Probably http://guides.railsgirls.com/install is an easy way to do it.
 
-* Configuration
+* Clone this repository into your computer
 
-* Database creation
+    cd ~
+    mkdir -p Code
+    cd Code
+    git clone https://github.com/samyukti/bright.git Bright
 
-* Database initialization
+* Install the dependencies
 
-* How to run the test suite
+    cd Bright
+    bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+* (Re)Initialize the database
 
-* Deployment instructions
+    rake db:reset
 
-* ...
+* Start the application in development mode
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    rails server
