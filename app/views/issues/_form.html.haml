@@ -1,0 +1,22 @@
+= simple_form_for @issue, defaults: {input_html: { class: "form-control" }} do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.association :asset, input_html: { class: 'selectize' }
+      .col-md-6
+        = f.association :member, input_html: { class: 'selectize' }
+    .row
+      .col-md-6
+        = f.input :issued_date, as: :datepick
+      .col-md-6
+        = f.input :return_date, as: :datepick
+    .row
+      .col-md-12
+        = f.input :notes
+
+  .form-actions
+    = f.button :submit
+    = link_to @issue do
+      %button.btn.btn-default{type: "button"} Cancel

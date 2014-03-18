@@ -1,0 +1,29 @@
+%h1.page-header Issues
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Issue', new_issue_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Book
+            %th Member
+            %th Issued
+            %th Return
+            %th Extensions
+            %th
+            %th
+        %tbody
+          - @issues.each do |issue|
+            %tr
+              %td= issue.id
+              %td= issue.book.name
+              %td= issue.member.name
+              %td= issue.issued_date
+              %td= issue.return_date
+              %td= issue.extension
+              %td= link_to 'Show', issue
+              %td= link_to 'Edit', edit_issue_path(issue)

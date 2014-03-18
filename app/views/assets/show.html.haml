@@ -1,0 +1,57 @@
+%h1.page-header Assets
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_asset_path(@asset)
+
+    .row
+      .col-md-6
+        = display_field @asset.code, label: 'Code'
+      .col-md-6
+        = display_field @asset.name, label: 'Name'
+    .row
+      .col-md-6
+        = display_field @asset.category.name, label: 'Category'
+      .col-md-6
+        = display_field @asset.subject, label: 'Subject'
+    .row
+      .col-md-6
+        = display_field @asset.author, label: 'Author'
+      .col-md-6
+        = display_field @asset.author_sort, label: 'Author, Sort'
+    .row
+      .col-md-6
+        = display_field @asset.kind, label: 'Type'
+      .col-md-6
+        = display_field @asset.format, label: 'Format'
+    .row
+      .col-md-6
+        = display_field @asset.publisher, label: 'Publisher'
+      .col-md-6
+        = display_field @asset.published_date, label: 'Published Date'
+    .row
+      .col-md-6
+        = display_field @asset.pages, label: 'Pages'
+      .col-md-6
+        = display_field @asset.language, label: 'Language'
+    .row
+      .col-md-6
+        = display_field @asset.isbn_10, label: 'ISBN(10)'
+      .col-md-6
+        = display_field @asset.isbn_13, label: 'ISBN(13)'
+    .row
+      .col-md-6
+        = display_field @asset.rights, label: 'Rights'
+      .col-md-6
+        = display_field @asset.rating, label: 'Rating'
+    .row
+      .col-md-12
+        = display_field @asset.tags, label: 'Tags'
+    .row
+      .col-md-12
+        = display_field @asset.excerpt, label: 'Excerpt'
+    .row
+      .col-md-12
+        = display_field @asset.notes, label: 'Notes'

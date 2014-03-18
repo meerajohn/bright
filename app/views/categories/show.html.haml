@@ -1,0 +1,19 @@
+%h1.page-header Categories
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_category_path(@category)
+
+    .row
+      .col-md-6
+        = display_field @category.code, label: 'Code'
+      .col-md-6
+        = display_field @category.name, label: 'Name'
+    .row
+      .col-md-6
+        = display_field @category.kind, label: 'Type'
+    .row
+      .col-md-12
+        = display_field @category.notes, label: 'Notes'

@@ -1,0 +1,67 @@
+= simple_form_for @asset, defaults: {input_html: { class: "form-control" }} do |f|
+  = f.error_notification
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :code
+      .col-md-6
+        = f.input :name
+    .row
+      .col-md-6
+        = f.association :category, input_html: { class: 'selectize' }
+      .col-md-6
+        = f.input :subject
+    .row
+      .col-md-6
+        = f.input :author
+      .col-md-6
+        = f.input :author_sort
+    .row
+      .col-md-6
+        = f.input :kind,                                |
+          label: "Type",                                |
+          collection: Settings.asset.kinds,             |
+          input_html: {class: "form-control selectize"} |
+      .col-md-6
+        = f.input :format,                              |
+          collection: Settings.asset.formats,           |
+          input_html: {class: "form-control selectize"} |
+    .row
+      .col-md-6
+        = f.input :publisher
+      .col-md-6
+        = f.input :published_date, as: :datepick
+    .row
+      .col-md-6
+        = f.input :pages
+      .col-md-6
+        = f.input :language,                            |
+          collection: Settings.asset.languages,         |
+          input_html: {class: "form-control selectize"} |
+    .row
+      .col-md-6
+        = f.input :isbn_10, label: 'ISBN 10'
+      .col-md-6
+        = f.input :isbn_13, label: 'ISBN 13'
+    .row
+      .col-md-6
+        = f.input :rights
+      .col-md-6
+        = f.input :rating,                              |
+          collection: Settings.asset.ratings,           |
+          input_html: {class: "form-control selectize"} |
+    .row
+      .col-md-12
+        = f.input :tags
+    .row
+      .col-md-12
+        = f.input :excerpt
+    .row
+      .col-md-12
+        = f.input :notes
+
+  .form-actions
+    = f.button :submit
+    = link_to @asset do
+      %button.btn.btn-default{type: "button"} Cancel

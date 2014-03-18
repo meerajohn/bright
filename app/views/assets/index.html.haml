@@ -1,0 +1,29 @@
+%h1.page-header Assets
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Asset', new_asset_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Category
+            %th Kind
+            %th Format
+            %th
+            %th
+        %tbody
+          - @assets.each do |asset|
+            %tr
+              %td= asset.id
+              %td= asset.code
+              %td= asset.name
+              %td= asset.category.name
+              %td= asset.kind
+              %td= asset.format
+              %td= link_to 'Show', asset
+              %td= link_to 'Edit', edit_asset_path(asset)

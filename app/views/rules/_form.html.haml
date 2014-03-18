@@ -1,0 +1,12 @@
+= simple_form_for @rule, defaults: {input_html: { class: "form-control" }} do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :category_id
+    = f.input :membership_id
+    = f.input :mnemonic
+    = f.input :name
+    = f.input :value
+
+  .form-actions
+    = f.button :submit

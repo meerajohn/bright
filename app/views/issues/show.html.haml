@@ -1,0 +1,24 @@
+%h1.page-header Issues
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_issue_path(@issue)
+
+    .row
+      .col-md-6
+        = display_field @issue.member.name, label: 'Member'
+    .row
+      .col-md-6
+        = display_field @issue.asset.name, label: 'Asset'
+      .col-md-6
+        = display_field @issue.copy.accession_no, label: 'Accession No'
+    .row
+      .col-md-6
+        = display_field @issue.issued_date, label: 'Issued On'
+      .col-md-6
+        = display_field @issue.return_date, label: 'Return By'
+    .row
+      .col-md-12
+        = display_field @issue.notes, label: 'Notes'

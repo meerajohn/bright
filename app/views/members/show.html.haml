@@ -1,0 +1,26 @@
+%h1.page-header Members
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_member_path(@member)
+
+    .row
+      .col-md-6
+        = display_field @member.code, label: 'Code'
+      .col-md-6
+        = display_field @member.name, label: 'Name'
+    .row
+      .col-md-6
+        = display_field @member.membership.name, label: 'Membership'
+      .col-md-6
+        = display_field @member.kind, label: 'Type'
+    .row
+      .col-md-6
+        = display_field @member.gender, label: 'Gender'
+      .col-md-6
+        = display_field @member.age_group, label: 'Age Group'
+    .row
+      .col-md-12
+        = display_field @member.notes, label: 'Notes'

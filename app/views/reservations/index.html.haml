@@ -1,0 +1,25 @@
+%h1.page-header Reservations
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Reservation', new_reservation_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Book
+            %th Member
+            %th Reserved On
+            %th
+            %th
+        %tbody
+          - @reservations.each do |reservation|
+            %tr
+              %td= reservation.id
+              %td= reservation.book.name
+              %td= reservation.member.name
+              %td= reservation.reserved_date
+              %td= link_to 'Show', reservation
+              %td= link_to 'Edit', edit_reservation_path(reservation)

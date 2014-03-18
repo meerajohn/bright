@@ -1,0 +1,25 @@
+%h1.page-header Users
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New User', new_user_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Email
+            %th Current Sign In
+            %th Last Sign In
+            %th
+            %th
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.id
+              %td= user.email
+              %td= user.current_sign_in_at
+              %td= user.last_sign_in_at
+              %td= link_to 'Show', user
+              %td= link_to 'Edit', edit_user_path(user)

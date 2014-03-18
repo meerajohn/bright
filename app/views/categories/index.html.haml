@@ -1,0 +1,25 @@
+%h1.page-header Categories
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Category', new_category_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Type
+            %th
+            %th
+        %tbody
+          - @categories.each do |category|
+            %tr
+              %td= category.id
+              %td= category.code
+              %td= category.name
+              %td= category.kind
+              %td= link_to 'Show', category
+              %td= link_to 'Edit', edit_category_path(category)

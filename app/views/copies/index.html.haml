@@ -1,0 +1,27 @@
+%h1.page-header Copies
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Copy', new_copy_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Book
+            %th Accession No
+            %th Quality
+            %th Status
+            %th
+            %th
+        %tbody
+          - @copies.each do |copy|
+            %tr
+              %td= copy.id
+              %td= copy.book.name
+              %td= copy.accession_no
+              %td= copy.quality
+              %td= copy.status
+              %td= link_to 'Show', copy
+              %td= link_to 'Edit', edit_copy_path(copy)

@@ -1,0 +1,27 @@
+%h1.page-header Members
+.row
+  .col-md-12
+    %h2.sub-header Index
+    .text-right
+      = link_to 'New Member', new_member_path
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Membership
+            %th Kind
+            %th
+            %th
+        %tbody
+          - @members.each do |member|
+            %tr
+              %td= member.id
+              %td= member.code
+              %td= member.name
+              %td= member.membership.name
+              %td= member.kind
+              %td= link_to 'Show', member
+              %td= link_to 'Edit', edit_member_path(member)

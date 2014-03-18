@@ -1,0 +1,24 @@
+%h1.page-header Copies
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_copy_path(@copy)
+
+    .row
+      .col-md-6
+        = display_field @copy.asset.name, label: 'Asset'
+      .col-md-6
+        = display_field @copy.accession_no, label: 'Accession No'
+    .row
+      .col-md-6
+        = display_field @copy.procured_date, label: 'Procured Date'
+    .row
+      .col-md-6
+        = display_field @copy.quality, label: 'Quality'
+      .col-md-6
+        = display_field @copy.status, label: 'Status'
+    .row
+      .col-md-12
+        = display_field @copy.notes, label: 'Notes'

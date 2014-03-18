@@ -1,0 +1,26 @@
+%ul.nav.nav-sidebar
+  %li{class: is_active?([:home])}
+    %a{href: root_path} Overview
+  %li{class: is_active?([:reports])}
+    %a{href: reports_path} Reports
+  %li{class: is_active?([:issues])}
+    %a{href: issues_path} Issue
+  %li{class: is_active?([:reservations])}
+    %a{href: reservations_path} Reservation
+%ul.nav.nav-sidebar
+  %li{class: is_active?([:categories])}
+    %a{href: categories_path} Categories
+  %li{class: is_active?([:assets])}
+    %a{href: assets_path} Assets
+  %li{class: is_active?([:copies])}
+    %a{href: copies_path} Copies
+%ul.nav.nav-sidebar
+  %li{class: is_active?([:memberships])}
+    %a{href: memberships_path} Memberships
+  %li{class: is_active?([:members])}
+    %a{href: members_path} Members
+%ul.nav.nav-sidebar
+  %li{class: is_active?([:users])}
+    %a{href: users_path} Users
+  %li{class: is_active?([:settings])}
+    %a{href: ""} Settings

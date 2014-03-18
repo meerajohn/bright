@@ -1,0 +1,19 @@
+%h1.page-header Memberships
+.row
+  .col-md-12
+    %p#notice= notice
+    %h2.sub-header View
+    .text-right
+      = link_to 'Edit', edit_membership_path(@membership)
+
+    .row
+      .col-md-6
+        = display_field @membership.code, label: 'Code'
+      .col-md-6
+        = display_field @membership.name, label: 'Name'
+    .row
+      .col-md-6
+        = display_field @membership.kind, label: 'Type'
+    .row
+      .col-md-12
+        = display_field @membership.notes, label: 'Notes'
