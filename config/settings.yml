@@ -1,3 +1,33 @@
+category:
+  kinds:
+    - Arts
+    - Biographies
+    - Business
+    - Children's
+    - Comics
+    - Computers
+    - Cooking
+    - Crafts
+    - Engineering
+    - Entertainment
+    - Health
+    - History
+    - Humour
+    - Law
+    - Literature
+    - Mathematics
+    - Medicine
+    - News
+    - Others
+    - Reference
+    - Relationships
+    - Religion
+    - Politics
+    - Science
+    - Self-Help
+    - Sports
+    - Travel
+
 asset:
   kinds:
     - Book
