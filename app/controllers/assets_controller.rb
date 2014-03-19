@@ -12,6 +12,16 @@ class AssetsController < ApplicationController
     @asset = Asset.new
   end
 
+  def clone
+    orig = Asset.where(id: params[:asset_id]).first
+    if orig
+      attributes = orig.attributes
+      attributes[:code] = nil
+    end
+    @asset = Asset.new(attributes)
+    render :new
+  end
+
   def edit
   end
 

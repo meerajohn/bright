@@ -12,6 +12,16 @@ class CopiesController < ApplicationController
     @copy = Copy.new
   end
 
+  def clone
+    orig = Copy.where(id: params[:copy_id]).first
+    if orig
+      attributes = orig.attributes
+      attributes[:name] = nil
+    end
+    @copy = Copy.new(attributes)
+    render :new
+  end
+
   def edit
   end
 

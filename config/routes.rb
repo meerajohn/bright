@@ -8,9 +8,13 @@ Bright::Application.routes.draw do
 
   resources :categories
 
-  resources :assets
+  resources :assets do
+    get :clone
+  end
 
-  resources :copies
+  resources :copies do
+    get :clone
+  end
 
   resources :memberships
 
