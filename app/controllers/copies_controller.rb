@@ -9,7 +9,11 @@ class CopiesController < ApplicationController
   end
 
   def new
-    @copy = Copy.new
+    if params[:next]
+      attributes = Copy.where(id: params[:next]).first.attributes
+      attributes[:name] = nil
+    end
+    @copy = Copy.new(attributes)
   end
 
   def clone
@@ -30,8 +34,12 @@ class CopiesController < ApplicationController
 
     respond_to do |format|
       if @copy.save
-        format.html { redirect_to @copy, notice: 'Copy was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @copy }
+        if params[:next]
+          format.html { redirect_to new_copy_path next: @copy.id }
+        else
+          format.html { redirect_to @copy, notice: 'Copy was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @copy }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @copy.errors, status: :unprocessable_entity }

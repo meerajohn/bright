@@ -9,7 +9,11 @@ class AssetsController < ApplicationController
   end
 
   def new
-    @asset = Asset.new
+    if params[:next]
+      attributes = Asset.where(id: params[:next]).first.attributes
+      attributes[:code] = nil
+    end
+    @asset = Asset.new(attributes)
   end
 
   def clone
@@ -30,8 +34,12 @@ class AssetsController < ApplicationController
 
     respond_to do |format|
       if @asset.save
-        format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @asset }
+        if params[:next]
+          format.html { redirect_to new_asset_path next: @asset.id }
+        else
+          format.html { redirect_to @asset, notice: 'Asset was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @asset }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @asset.errors, status: :unprocessable_entity }

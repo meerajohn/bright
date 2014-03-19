@@ -65,5 +65,7 @@
 
   .form-actions
     = f.button :submit
+    - if ['new', 'create'].include?(action_name)
+      = f.button :submit, 'Save & Next', name: 'next'
     = link_to @asset do
       %button.btn.btn-default{type: "button"} Cancel
