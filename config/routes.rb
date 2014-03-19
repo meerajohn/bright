@@ -18,9 +18,13 @@ Bright::Application.routes.draw do
 
   resources :addresses
 
-  resources :issues
+  resources :issues do
+    patch :cancel, :close
+  end
 
-  resources :reservations
+  resources :reservations do
+    patch :cancel, :close
+  end
 
   resources :rules
 

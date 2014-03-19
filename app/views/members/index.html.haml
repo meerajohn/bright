@@ -3,7 +3,8 @@
   .col-md-12
     %h2.sub-header Index
     .text-right
-      = link_to 'New Member', new_member_path
+      = link_to new_member_path do
+        %button.btn.btn-success{type: "button"} New
     .table-responsive
       %table.table.table-striped
         %thead
@@ -12,9 +13,8 @@
             %th Code
             %th Name
             %th Membership
-            %th Kind
-            %th
-            %th
+            %th Type
+            %th.action-cell
         %tbody
           - @members.each do |member|
             %tr
@@ -23,5 +23,14 @@
               %td= member.name
               %td= member.membership.name
               %td= member.kind
-              %td= link_to 'Show', member
-              %td= link_to 'Edit', edit_member_path(member)
+              %td.action-cell
+                = link_to member do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                  %span.spacer
+                = link_to edit_member_path(member) do
+                  %span.btn-xs.btn-primary
+                    %i.fa.fa-pencil
+.row
+  .col-md-12
+    = paginate @members

@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :copy do
     asset_id 1
-    accession_no "MyString"
+    name "MyString"
     procured_date "2014-03-19"
     quality "MyString"
     status "MyString"

@@ -31,7 +31,7 @@ gem 'workflow'
 
 # forms
 gem 'simple_form'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'mousetrap-rails'
 gem 'selectize-rails'
 

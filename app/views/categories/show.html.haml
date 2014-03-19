@@ -4,7 +4,12 @@
     %p#notice= notice
     %h2.sub-header View
     .text-right
-      = link_to 'Edit', edit_category_path(@category)
+      = link_to @category, method: :delete, confirm: 'Are you sure?' do
+        %button.btn.btn-danger{type: "button"} Delete
+      = link_to edit_category_path(@category) do
+        %button.btn.btn-primary{type: "button"} Edit
+      = link_to new_category_path do
+        %button.btn.btn-success{type: "button"} New
 
     .row
       .col-md-6

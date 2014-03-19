@@ -3,7 +3,8 @@
   .col-md-12
     %h2.sub-header Index
     .text-right
-      = link_to 'New Reservation', new_reservation_path
+      = link_to new_reservation_path do
+        %button.btn.btn-success{type: "button"} New
     .table-responsive
       %table.table.table-striped
         %thead
@@ -12,14 +13,21 @@
             %th Book
             %th Member
             %th Reserved On
-            %th
-            %th
+            %th Status
+            %th.action-cell
         %tbody
           - @reservations.each do |reservation|
             %tr
               %td= reservation.id
-              %td= reservation.book.name
+              %td= reservation.asset.name
               %td= reservation.member.name
               %td= reservation.reserved_date
-              %td= link_to 'Show', reservation
-              %td= link_to 'Edit', edit_reservation_path(reservation)
+              %td= reservation.status.titleize
+              %td.action-cell
+                = link_to reservation do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                  %span.spacer
+.row
+  .col-md-12
+    = paginate @reservations

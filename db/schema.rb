@@ -74,10 +74,13 @@ ActiveRecord::Schema.define(version: 20140318220432) do
 
   create_table "copies", force: true do |t|
     t.integer  "asset_id"
-    t.string   "accession_no"
+    t.string   "name"
     t.date     "procured_date"
-    t.string   "quality"
     t.string   "status"
+    t.string   "quality"
+    t.integer  "quantity",      default: 1
+    t.boolean  "issuable",      default: true
+    t.boolean  "issued",        default: false
     t.text     "notes"
     t.integer  "created_by"
     t.integer  "updated_by"
@@ -129,7 +132,7 @@ ActiveRecord::Schema.define(version: 20140318220432) do
   create_table "reservations", force: true do |t|
     t.integer  "asset_id"
     t.integer  "member_id"
-    t.integer  "reserved_date"
+    t.date     "reserved_date"
     t.string   "status"
     t.text     "notes"
     t.integer  "created_by"

@@ -1,28 +1,20 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
-  # GET /issues
-  # GET /issues.json
   def index
-    @issues = Issue.all
+    @issues = Issue.order("status desc, id desc").page(params[:page])
   end
 
-  # GET /issues/1
-  # GET /issues/1.json
   def show
   end
 
-  # GET /issues/new
   def new
     @issue = Issue.new
   end
 
-  # GET /issues/1/edit
   def edit
   end
 
-  # POST /issues
-  # POST /issues.json
   def create
     @issue = Issue.new(issue_params)
 
@@ -37,8 +29,6 @@ class IssuesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /issues/1
-  # PATCH/PUT /issues/1.json
   def update
     respond_to do |format|
       if @issue.update(issue_params)
@@ -51,8 +41,32 @@ class IssuesController < ApplicationController
     end
   end
 
-  # DELETE /issues/1
-  # DELETE /issues/1.json
+  def cancel
+    @issue = Issue.find params[:issue_id]
+    respond_to do |format|
+      if @issue.cancel!
+        format.html { redirect_to @issue, notice: 'Issue was successfully canceled.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @issue, notice: 'Issue could not be canceled due to errors.' }
+        format.json { render json: @issue.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def close
+    @issue = Issue.find params[:issue_id]
+    respond_to do |format|
+      if @issue.close!
+        format.html { redirect_to @issue, notice: 'Asset was successfully returned.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @issue, notice: 'Asset could not be returned due to errors.' }
+        format.json { render json: @issue.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @issue.destroy
     respond_to do |format|
@@ -62,13 +76,11 @@ class IssuesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_issue
       @issue = Issue.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def issue_params
-      params.require(:issue).permit(:asset_id, :member_id, :issued_date, :kind, :status, :return_date, :extension, :notes, :created_by, :updated_by)
+      params.require(:issue).permit(:copy_id, :member_id, :issued_date, :kind, :status, :return_date, :extension, :notes, :created_by, :updated_by)
     end
 end

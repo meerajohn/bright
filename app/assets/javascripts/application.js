@@ -24,4 +24,7 @@ if ($.fn.selectize) {
 }
 
 // datepicker
-$(".datepicker-input").each(function(){ $(this).datepicker();});
+$('.datepicker-input').datepicker({
+    todayBtn: "linked",
+    todayHighlight: true
+});

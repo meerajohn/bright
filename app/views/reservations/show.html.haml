@@ -1,48 +1,32 @@
-%h1.page-header Issues
+%h1.page-header Reservations
 .row
   .col-md-12
     %p#notice= notice
     %h2.sub-header View
     .text-right
-      = link_to 'Edit', edit_issue_path(@issue)
+      - if @reservation.reserved?
+        = link_to reservation_close_path(@reservation), method: :patch, data: { confirm: 'Are you sure?' } do
+          %button.btn.btn-danger{type: "button"} Close
+        = link_to reservation_cancel_path(@reservation), method: :patch, data: { confirm: 'Are you sure?' } do
+          %button.btn.btn-warning{type: "button"} Cancel
+        = link_to edit_reservation_path(@reservation) do
+          %button.btn.btn-primary{type: "button"} Edit
+      = link_to new_reservation_path do
+        %button.btn.btn-success{type: "button"} New
 
     .row
       .col-md-6
-        = display_field @issue.asset.name, label: 'Asset'
-      .col-md-6
-        = display_field @issue.member.name, label: 'Member'
+        %h3
+          = "##{@reservation.id}"
+          %small= "/ #{@reservation.status.titleize}"
     .row
       .col-md-6
-        = display_field @issue.issued_date, label: 'Reserved On'
+        = display_field @reservation.asset.name, label: 'Asset'
+      .col-md-6
+        = display_field @reservation.member.name, label: 'Member'
+    .row
+      .col-md-6
+        = display_field @reservation.reserved_date, label: 'Reserved On'
     .row
       .col-md-12
-        = display_field @issue.notes, label: 'Notes'
-
-
-%p#notice= notice
-
-%p
-  %b Book:
-  = @reservation.asset_id
-%p
-  %b Member:
-  = @reservation.member_id
-%p
-  %b Reserved date:
-  = @reservation.reserved_date
-%p
-  %b Status:
-  = @reservation.status
-%p
-  %b Notes:
-  = @reservation.notes
-%p
-  %b Created by:
-  = @reservation.created_by
-%p
-  %b Updated by:
-  = @reservation.updated_by
-
-= link_to 'Edit', edit_reservation_path(@reservation)
-\|
-= link_to 'Back', reservations_path
+        = display_field @reservation.notes, label: 'Notes'

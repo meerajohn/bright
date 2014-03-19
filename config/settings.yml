@@ -25,7 +25,7 @@ category:
     - Arts
     - Biographies
     - Business
-    - Children's
+    - Children
     - Comics
     - Computers
     - Cooking
@@ -98,6 +98,8 @@ copy:
     - {id: 'd', name: 'Damaged'}
   statuses:
     - {id: 'a', name: 'Available'}
+    - {id: 'm', name: 'Misplaced'}
+    - {id: 'l', name: 'Lost'}
     - {id: 'u', name: 'Unavailable'}
 
 format:

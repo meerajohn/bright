@@ -1,28 +1,20 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
-  # GET /memberships
-  # GET /memberships.json
   def index
-    @memberships = Membership.all
+    @memberships = Membership.page(params[:page])
   end
 
-  # GET /memberships/1
-  # GET /memberships/1.json
   def show
   end
 
-  # GET /memberships/new
   def new
     @membership = Membership.new
   end
 
-  # GET /memberships/1/edit
   def edit
   end
 
-  # POST /memberships
-  # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
 
@@ -37,8 +29,6 @@ class MembershipsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /memberships/1
-  # PATCH/PUT /memberships/1.json
   def update
     respond_to do |format|
       if @membership.update(membership_params)
@@ -51,8 +41,6 @@ class MembershipsController < ApplicationController
     end
   end
 
-  # DELETE /memberships/1
-  # DELETE /memberships/1.json
   def destroy
     @membership.destroy
     respond_to do |format|
@@ -62,12 +50,10 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_membership
       @membership = Membership.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
       params.require(:membership).permit(:code, :name, :kind, :notes, :created_by, :updated_by)
     end

@@ -4,21 +4,32 @@
     %p#notice= notice
     %h2.sub-header View
     .text-right
-      = link_to 'Edit', edit_copy_path(@copy)
+      = link_to @copy, method: :delete, confirm: 'Are you sure?' do
+        %button.btn.btn-danger{type: "button"} Delete
+      = link_to edit_copy_path(@copy) do
+        %button.btn.btn-primary{type: "button"} Edit
+      = link_to new_copy_path do
+        %button.btn.btn-success{type: "button"} New
 
     .row
       .col-md-6
         = display_field @copy.asset.name, label: 'Asset'
       .col-md-6
-        = display_field @copy.accession_no, label: 'Accession No'
+        = display_field @copy.name, label: 'Accession No'
     .row
       .col-md-6
         = display_field @copy.procured_date, label: 'Procured Date'
+      .col-md-3
+        = display_field @copy.quantity, label: 'Quantity'
+      .col-md-3
+        = display_field @copy.issuable.to_s.titleize, label: 'Issuable'
     .row
       .col-md-6
-        = display_field @copy.quality, label: 'Quality'
+        = display_field lookup(Settings.copy.qualities, @copy.quality), |
+                        label: 'Quality'                                |
       .col-md-6
-        = display_field @copy.status, label: 'Status'
+        = display_field lookup(Settings.copy.statuses, @copy.status),   |
+                        label: 'Status'                                 |
     .row
       .col-md-12
         = display_field @copy.notes, label: 'Notes'

@@ -4,7 +4,9 @@
   .form-inputs
     .row
       .col-md-6
-        = f.association :asset, input_html: { class: 'selectize' }
+        = f.input :copy_id,                             |
+          collection: Copy.available,                   |
+          input_html: {class: "form-control selectize"} |
       .col-md-6
         = f.association :member, input_html: { class: 'selectize' }
     .row
@@ -17,6 +19,6 @@
         = f.input :notes
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, 'Issue'
     = link_to @issue do
       %button.btn.btn-default{type: "button"} Cancel

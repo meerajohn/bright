@@ -1,6 +1,7 @@
 class Asset < ActiveRecord::Base
   belongs_to :category
 
+  has_many :copies, dependent: :restrict_with_error
   has_many :issues, dependent: :restrict_with_error
   has_many :reservations, dependent: :restrict_with_error
 

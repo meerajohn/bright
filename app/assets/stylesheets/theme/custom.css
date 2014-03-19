@@ -6,3 +6,9 @@
 .display-field {
   font-size: 16px;
 }
+.spacer {
+  margin: 2px;
+}
+.action-cell {
+  width: 10%;
+}
