@@ -46,7 +46,9 @@
         = f.input :isbn_13, label: 'ISBN 13'
     .row
       .col-md-6
-        = f.input :rights
+        = f.input :rights,                              |
+          collection: Settings.asset.rights,            |
+          input_html: {class: "form-control selectize"} |
       .col-md-6
         = f.input :rating,                              |
           collection: Settings.asset.ratings,           |

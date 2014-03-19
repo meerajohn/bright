@@ -1,3 +1,25 @@
+membership:
+  kinds:
+    - Premium
+    - Plus
+    - Reader
+
+member:
+  kinds:
+    - Person
+    - Family
+    - Organization
+  genders:
+    - Male
+    - Female
+    - N/A
+  age_groups:
+    - Teen
+    - Young
+    - Middle
+    - Senior
+    - N/A
+
 category:
   kinds:
     - Arts
@@ -48,6 +70,14 @@ asset:
     - Kannada
     - Arabic
     - Other
+  rights:
+    - Copyrighted
+    - Copyright Expired
+    - Patented
+    - Author's Rights
+    - Creative Commons
+    - Orphan Works
+    - Public Domain
   ratings:
     - 1
     - 2
@@ -59,6 +89,16 @@ asset:
     - 8
     - 9
     - 10
+
+copy:
+  qualities:
+    - {id: 'n', name: 'New'}
+    - {id: 'u', name: 'Used'}
+    - {id: 'w', name: 'Worn Out'}
+    - {id: 'd', name: 'Damaged'}
+  statuses:
+    - {id: 'a', name: 'Available'}
+    - {id: 'u', name: 'Unavailable'}
 
 format:
   date: 'yyyy-mm-dd'
