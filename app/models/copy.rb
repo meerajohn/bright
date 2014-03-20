@@ -9,11 +9,11 @@ class Copy < ActiveRecord::Base
   QUALITY_WORN_OUT   = 'w'
   QUALITY_DAMAGED    = 'd'
 
-  belongs_to :asset
+  belongs_to :item
 
   has_many :issues, dependent: :restrict_with_error
 
-  validates_presence_of :name, :quality, :status, :asset_id
+  validates_presence_of :name, :quality, :status, :item_id
   validates_uniqueness_of :name
   validate :valid_procured_date
   validate :unit_quantity_is_issuable
@@ -38,7 +38,7 @@ private
   end
 
   def unit_quantity_is_issuable
-    errors.add(:quantity, 'Issuable assets should be 1 per copy') \
+    errors.add(:quantity, 'Issuable items should be 1 per copy') \
       if self.issuable? && quantity != 1
   end 
 

@@ -1,7 +1,8 @@
-%h1.page-header Issues
+%h1.page-header
+  Issues
+  %small / Index
 .row
   .col-md-12
-    %h2.sub-header Index
     .text-right
       = link_to new_issue_path do
         %button.btn.btn-success{type: "button"} New
@@ -10,7 +11,7 @@
         %thead
           %tr
             %th #
-            %th Asset
+            %th Item
             %th Accession No
             %th Member
             %th Issued
@@ -22,7 +23,7 @@
           - @issues.each do |issue|
             %tr
               %td= issue.id
-              %td= issue.asset.name
+              %td= issue.item.name
               %td= issue.copy.name
               %td= issue.member.name
               %td= issue.issued_date

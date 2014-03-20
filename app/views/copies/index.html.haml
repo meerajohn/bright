@@ -1,7 +1,8 @@
-%h1.page-header Copies
+%h1.page-header
+  Copies
+  %small / Index
 .row
   .col-md-12
-    %h2.sub-header Index
     .text-right
       = link_to new_copy_path do
         %button.btn.btn-success{type: "button"} New
@@ -10,7 +11,7 @@
         %thead
           %tr
             %th #
-            %th Asset
+            %th Item
             %th Accession No
             %th Quality
             %th Status
@@ -20,7 +21,7 @@
           - @copies.each do |copy|
             %tr
               %td= copy.id
-              %td= copy.asset.name
+              %td= copy.item.name
               %td= copy.name
               %td= lookup(Settings.copy.qualities, copy.quality)
               %td= lookup(Settings.copy.statuses, copy.status)

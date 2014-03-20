@@ -7,12 +7,13 @@ User.create! email: 'admin@bright.local', password: 'brighter', password_confirm
 puts 'Seeding Demo Data...'
 y01 = Category.create! code: '1001', name: 'Classics', kind: 'Literature'
 
-a01 = Asset.create! code: 'B10001', name: 'Pride and Prejudice', category: y01, author: 'Jane Austen',
-                   author_sort: 'Austen, Jane', kind: 'Book', format: 'Paperback', language: 'English',
-                   rights: 'Public Domain', rating: 10
+r01 = Creator.create! kind: 'Author', first_name: 'Jane', last_name: 'Austen', sort_name: 'Austen, Jane'
 
-c01 = Copy.create! asset: a01, name: 'P118127340JA001', quality: 'n', status: 'a'
-c02 = Copy.create! asset: a01, name: 'P118127340JA002', quality: 'u', status: 'a'
+a01 = Item.create! code: 'B10001', name: 'Pride and Prejudice', category: y01, creator: r01, kind: 'Book',
+                   format: 'Paperback', language: 'English', rights: 'Public Domain', rating: 10
+
+c01 = Copy.create! item: a01, name: 'P118127340JA001', quality: 'n', status: 'a'
+c02 = Copy.create! item: a01, name: 'P118127340JA002', quality: 'u', status: 'a'
 
 p01 = Membership.create! code: '1001', name: 'Premium Members', kind: 'Premium'
 

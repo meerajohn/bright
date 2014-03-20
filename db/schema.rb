@@ -34,32 +34,6 @@ ActiveRecord::Schema.define(version: 20140318220432) do
     t.datetime "updated_at"
   end
 
-  create_table "assets", force: true do |t|
-    t.integer  "category_id"
-    t.string   "code"
-    t.string   "name"
-    t.string   "author"
-    t.string   "author_sort"
-    t.string   "subject"
-    t.string   "kind"
-    t.string   "format"
-    t.integer  "pages"
-    t.string   "publisher"
-    t.date     "published_date"
-    t.string   "language"
-    t.string   "isbn_10"
-    t.string   "isbn_13"
-    t.string   "rights"
-    t.string   "rating"
-    t.string   "tags"
-    t.text     "excerpt"
-    t.text     "notes"
-    t.integer  "created_by"
-    t.integer  "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "categories", force: true do |t|
     t.integer  "parent_id"
     t.string   "code"
@@ -73,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140318220432) do
   end
 
   create_table "copies", force: true do |t|
-    t.integer  "asset_id"
+    t.integer  "item_id"
     t.string   "name"
     t.date     "procured_date"
     t.string   "status"
@@ -88,15 +62,62 @@ ActiveRecord::Schema.define(version: 20140318220432) do
     t.datetime "updated_at"
   end
 
+  create_table "creators", force: true do |t|
+    t.string   "kind"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "full_name"
+    t.string   "sort_name"
+    t.text     "notes"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "issues", force: true do |t|
     t.integer  "copy_id"
-    t.integer  "asset_id"
+    t.integer  "item_id"
     t.integer  "member_id"
     t.date     "issued_date"
     t.string   "kind"
     t.string   "status"
     t.date     "return_date"
     t.integer  "extension"
+    t.text     "notes"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_creators", force: true do |t|
+    t.integer  "item_id"
+    t.string   "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "category_id"
+    t.string   "code"
+    t.string   "name"
+    t.string   "creator_id"
+    t.string   "subject"
+    t.string   "kind"
+    t.string   "format"
+    t.integer  "pages"
+    t.string   "publisher"
+    t.date     "published_date"
+    t.string   "language"
+    t.string   "isbn_10"
+    t.string   "isbn_13"
+    t.string   "reference"
+    t.string   "rights"
+    t.string   "rating"
+    t.string   "tags"
+    t.text     "excerpt"
     t.text     "notes"
     t.integer  "created_by"
     t.integer  "updated_by"
@@ -130,7 +151,7 @@ ActiveRecord::Schema.define(version: 20140318220432) do
   end
 
   create_table "reservations", force: true do |t|
-    t.integer  "asset_id"
+    t.integer  "item_id"
     t.integer  "member_id"
     t.date     "reserved_date"
     t.string   "status"

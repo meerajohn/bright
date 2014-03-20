@@ -31,6 +31,7 @@ gem 'workflow'
 
 # forms
 gem 'simple_form'
+gem 'country_select'
 gem 'kaminari'
 gem 'mousetrap-rails'
 gem 'selectize-rails'

@@ -1,8 +1,9 @@
-%h1.page-header Memberships
+%h1.page-header
+  Memberships
+  %small / View
 .row
   .col-md-12
     %p#notice= notice
-    %h2.sub-header View
     .text-right
       = link_to @membership, method: :delete, confirm: 'Are you sure?' do
         %button.btn.btn-danger{type: "button"} Delete

@@ -50,7 +50,14 @@ category:
     - Sports
     - Travel
 
-asset:
+creator:
+  kinds:
+    - Author
+    - Artist
+    - Publisher
+    - Vendor
+
+item:
   kinds:
     - Book
     - Periodical

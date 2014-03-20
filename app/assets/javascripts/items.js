@@ -1,7 +1,7 @@
-var Asset = function () {
+var Item = function () {
 
   var initForm = function () {
-    $('#asset_tags').selectize({
+    $('#item_tags').selectize({
         delimiter: ',',
         persist: false,
         create: function(input) {

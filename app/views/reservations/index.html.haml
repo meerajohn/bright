@@ -1,7 +1,8 @@
-%h1.page-header Reservations
+%h1.page-header
+  Reservations
+  %small / Index
 .row
   .col-md-12
-    %h2.sub-header Index
     .text-right
       = link_to new_reservation_path do
         %button.btn.btn-success{type: "button"} New
@@ -19,7 +20,7 @@
           - @reservations.each do |reservation|
             %tr
               %td= reservation.id
-              %td= reservation.asset.name
+              %td= reservation.item.name
               %td= reservation.member.name
               %td= reservation.reserved_date
               %td= reservation.status.titleize

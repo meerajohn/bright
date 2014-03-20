@@ -1,8 +1,9 @@
-%h1.page-header Reservations
+%h1.page-header
+  Reservations
+  %small / View
 .row
   .col-md-12
     %p#notice= notice
-    %h2.sub-header View
     .text-right
       - if @reservation.reserved?
         = link_to reservation_close_path(@reservation), method: :patch, data: { confirm: 'Are you sure?' } do
@@ -21,7 +22,7 @@
           %small= "/ #{@reservation.status.titleize}"
     .row
       .col-md-6
-        = display_field @reservation.asset.name, label: 'Asset'
+        = display_field @reservation.item.name, label: 'Item'
       .col-md-6
         = display_field @reservation.member.name, label: 'Member'
     .row

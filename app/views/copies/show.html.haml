@@ -1,8 +1,9 @@
-%h1.page-header Copies
+%h1.page-header
+  Copies
+  %small / View
 .row
   .col-md-12
     %p#notice= notice
-    %h2.sub-header View
     .text-right
       = link_to @copy, method: :delete, confirm: 'Are you sure?' do
         %button.btn.btn-danger{type: "button"} Delete
@@ -15,7 +16,7 @@
 
     .row
       .col-md-6
-        = display_field @copy.asset.name, label: 'Asset'
+        = display_field @copy.item.name, label: 'Item'
       .col-md-6
         = display_field @copy.name, label: 'Accession No'
     .row

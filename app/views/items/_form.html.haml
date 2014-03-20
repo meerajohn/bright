@@ -1,4 +1,14 @@
-= simple_form_for @asset, defaults: {input_html: { class: "form-control" }} do |f|
+= simple_form_for @item, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      %p#notice= notice
+      .text-right
+        = f.button :submit, class: 'btn-primary'
+        - if ['new', 'create'].include?(action_name)
+          = f.button :submit, 'Save & Next', name: 'next', class: 'btn-info'
+        = link_to @item do
+          %button.btn.btn-default{type: "button"} Cancel
+
   = f.error_notification
 
   .form-inputs
@@ -14,18 +24,16 @@
         = f.input :subject
     .row
       .col-md-6
-        = f.input :author
-      .col-md-6
-        = f.input :author_sort
+        = f.association :creator, input_html: { class: 'selectize' }
     .row
       .col-md-6
         = f.input :kind,                                |
           label: "Type",                                |
-          collection: Settings.asset.kinds,             |
+          collection: Settings.item.kinds,             |
           input_html: {class: "form-control selectize"} |
       .col-md-6
         = f.input :format,                              |
-          collection: Settings.asset.formats,           |
+          collection: Settings.item.formats,           |
           input_html: {class: "form-control selectize"} |
     .row
       .col-md-6
@@ -37,7 +45,7 @@
         = f.input :pages
       .col-md-6
         = f.input :language,                            |
-          collection: Settings.asset.languages,         |
+          collection: Settings.item.languages,         |
           input_html: {class: "form-control selectize"} |
     .row
       .col-md-6
@@ -47,11 +55,11 @@
     .row
       .col-md-6
         = f.input :rights,                              |
-          collection: Settings.asset.rights,            |
+          collection: Settings.item.rights,            |
           input_html: {class: "form-control selectize"} |
       .col-md-6
         = f.input :rating,                              |
-          collection: Settings.asset.ratings,           |
+          collection: Settings.item.ratings,           |
           input_html: {class: "form-control selectize"} |
     .row
       .col-md-12
@@ -64,8 +72,8 @@
         = f.input :notes
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-primary'
     - if ['new', 'create'].include?(action_name)
-      = f.button :submit, 'Save & Next', name: 'next'
-    = link_to @asset do
+      = f.button :submit, 'Save & Next', name: 'next', class: 'btn-info'
+    = link_to @item do
       %button.btn.btn-default{type: "button"} Cancel

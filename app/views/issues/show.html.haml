@@ -1,8 +1,9 @@
-%h1.page-header Issues
+%h1.page-header
+  Issues
+  %small / View
 .row
   .col-md-12
     %p#notice= notice
-    %h2.sub-header View
     .text-right
       - if @issue.issued?
         = link_to issue_close_path(@issue), method: :patch, data: { confirm: 'Are you sure?' } do
@@ -24,7 +25,7 @@
         = display_field @issue.member.name, label: 'Member'
     .row
       .col-md-6
-        = display_field @issue.asset.name, label: 'Asset'
+        = display_field @issue.item.name, label: 'Item'
       .col-md-6
         = display_field @issue.copy.name, label: 'Accession No'
     .row

@@ -73,6 +73,6 @@ class CopiesController < ApplicationController
     end
 
     def copy_params
-      params.require(:copy).permit(:asset_id, :name, :procured_date, :quality, :quantity, :issuable, :status, :notes)
+      params.require(:copy).permit(:item_id, :name, :procured_date, :quality, :quantity, :issuable, :status, :notes)
     end
 end

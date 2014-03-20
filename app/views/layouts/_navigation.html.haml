@@ -8,10 +8,12 @@
   %li{class: is_active?([:reservations])}
     %a{href: reservations_path} Reservation
 %ul.nav.nav-sidebar
+  %li{class: is_active?([:creators])}
+    %a{href: creators_path} Creators
   %li{class: is_active?([:categories])}
     %a{href: categories_path} Categories
-  %li{class: is_active?([:assets])}
-    %a{href: assets_path} Assets
+  %li{class: is_active?([:items])}
+    %a{href: items_path} Items
   %li{class: is_active?([:copies])}
     %a{href: copies_path} Copies
 %ul.nav.nav-sidebar

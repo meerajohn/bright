@@ -1,4 +1,12 @@
 = simple_form_for @member, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      %p#notice= notice
+      .text-right
+        = f.button :submit, class: 'btn-primary'
+        = link_to @member do
+          %button.btn.btn-default{type: "button"} Cancel
+
   = f.error_notification
 
   .form-inputs
@@ -24,11 +32,18 @@
         = f.input :age_group,                           |
           collection: Settings.member.age_groups,       |
           input_html: {class: "form-control selectize"} |
+
+    %hr
+    %h4.form-section Address
+    = f.simple_fields_for :address do |a|
+      = render 'shared/edit_address_fields', f: a
+
+    %hr
     .row
       .col-md-12
         = f.input :notes
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-primary'
     = link_to @member do
       %button.btn.btn-default{type: "button"} Cancel

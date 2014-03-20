@@ -1,0 +1,30 @@
+%h1.page-header
+  Creators
+  %small / View
+.row
+  .col-md-12
+    %p#notice= notice
+    .text-right
+      = link_to @creator, method: :delete, confirm: 'Are you sure?' do
+        %button.btn.btn-danger{type: "button"} Delete
+      = link_to edit_creator_path(@creator) do
+        %button.btn.btn-primary{type: "button"} Edit
+      = link_to new_creator_path do
+        %button.btn.btn-success{type: "button"} New
+
+    .row
+      .col-md-6
+        = display_field @creator.kind, label: 'Type'
+    .row
+      .col-md-6
+        = display_field @creator.first_name, label: 'First Name'
+      .col-md-6
+        = display_field @creator.last_name, label: 'Last Name'
+    .row
+      .col-md-6
+        = display_field @creator.full_name, label: 'Full Name'
+      .col-md-6
+        = display_field @creator.sort_name, label: 'Sort Name'
+    .row
+      .col-md-12
+        = display_field @creator.notes, label: 'Notes'

@@ -1,6 +1,9 @@
-class Asset < ActiveRecord::Base
+class Item < ActiveRecord::Base
   belongs_to :category
+  belongs_to :creator
 
+  has_many :item_creators, dependent: :destroy
+  has_many :creators,  through: :item_creators
   has_many :copies, dependent: :restrict_with_error
   has_many :issues, dependent: :restrict_with_error
   has_many :reservations, dependent: :restrict_with_error

@@ -58,10 +58,10 @@ class IssuesController < ApplicationController
     @issue = Issue.find params[:issue_id]
     respond_to do |format|
       if @issue.close!
-        format.html { redirect_to @issue, notice: 'Asset was successfully returned.' }
+        format.html { redirect_to @issue, notice: 'Item was successfully returned.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to @issue, notice: 'Asset could not be returned due to errors.' }
+        format.html { redirect_to @issue, notice: 'Item could not be returned due to errors.' }
         format.json { render json: @issue.errors, status: :unprocessable_entity }
       end
     end

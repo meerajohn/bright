@@ -1,10 +1,18 @@
 = simple_form_for @reservation, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      %p#notice= notice
+      .text-right
+        = f.button :submit, class: 'btn-primary'
+        = link_to @reservation do
+          %button.btn.btn-default{type: "button"} Cancel
+
   = f.error_notification
 
   .form-inputs
     .row
       .col-md-6
-        = f.association :asset, input_html: { class: 'selectize' }
+        = f.association :item, input_html: { class: 'selectize' }
       .col-md-6
         = f.association :member, input_html: { class: 'selectize' }
     .row
@@ -15,6 +23,6 @@
         = f.input :notes
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-primary'
     = link_to @reservation do
       %button.btn.btn-default{type: "button"} Cancel

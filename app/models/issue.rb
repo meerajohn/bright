@@ -2,7 +2,7 @@ class Issue < ActiveRecord::Base
   include Workflow
   workflow_column :status
 
-  belongs_to :asset
+  belongs_to :item
   belongs_to :copy
   belongs_to :member
 
@@ -12,7 +12,7 @@ class Issue < ActiveRecord::Base
   validate :availability
   validate :reservations
 
-  before_save :set_asset
+  before_save :set_item
   after_create :update_copy
 
   scope :open, -> { where(status: :issued) }
@@ -41,10 +41,10 @@ private
   end
 
   def reservations
-    asset     = self.copy.asset
-    reserved  = asset.reservations.open.count
-    available = asset.copies.available.count
-    errors.add(:copy_id, 'All the copies of this asset are reserved.') \
+    item     = self.copy.item
+    reserved  = item.reservations.open.count
+    available = item.copies.available.count
+    errors.add(:copy_id, 'All the copies of this item are reserved.') \
       unless available > reserved
   end
 
@@ -62,8 +62,8 @@ private
     self.copy.update_attribute :issued, (self.current_state.name == :issued)
   end
 
-  def set_asset
-    self.asset = self.copy.asset
+  def set_item
+    self.item = self.copy.item
   end
 
 end

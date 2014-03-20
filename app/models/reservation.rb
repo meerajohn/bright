@@ -2,10 +2,10 @@ class Reservation < ActiveRecord::Base
   include Workflow
   workflow_column :status
 
-  belongs_to :asset
+  belongs_to :item
   belongs_to :member
 
-  validates_presence_of :asset_id, :member_id, :reserved_date
+  validates_presence_of :item_id, :member_id, :reserved_date
   validate :valid_reserved_date
 
   scope :open, -> { where(status: :reserved) }

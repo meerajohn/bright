@@ -81,6 +81,6 @@ class ReservationsController < ApplicationController
     end
 
     def reservation_params
-      params.require(:reservation).permit(:asset_id, :member_id, :reserved_date, :status, :notes, :created_by, :updated_by)
+      params.require(:reservation).permit(:item_id, :member_id, :reserved_date, :status, :notes, :created_by, :updated_by)
     end
 end
