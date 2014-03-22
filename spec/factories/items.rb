@@ -3,23 +3,22 @@
 FactoryGirl.define do
   factory :item do
     category_id 1
-    code "MyString"
-    name "MyString"
-    author "MyString"
-    author_sort "MyString"
+    code "1001" 
+    name "Pride and Prejudice"
+    creator_id 1
     subject "MyString"
-    kind "MyString"
-    format "MyString"
+    kind "Book"
+    format "Paperback"
     pages 1
-    publisher "MyString"
+    publisher "DC books"
     published_date "2014-03-19"
-    language "MyString"
+    language "English"
     isbn_10 "MyString"
     isbn_13 "MyString"
-    rights "MyString"
+    rights "Public Domain"
     tags "MyText"
     excerpt "MyText"
-    rating "MyText"
+    rating 10
     notes "MyText"
     created_by 1
     updated_by 1
